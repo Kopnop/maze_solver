@@ -21,8 +21,8 @@ def main():
     # cellA.draw_move(cellB)
 
 #__init__(self, x1, y1, num_rows, num_cols, cell_size_x, cell_size_y, win):
-    maze = Maze(50,50, 10, 10, 50, 50, win)
-
+    maze = Maze(50,50, 13, 10, 50, 50, win,0)
+    maze.solve()
     win.wait_for_close()
 
 

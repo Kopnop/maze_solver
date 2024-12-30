@@ -11,6 +11,7 @@ class Cell():
         self.x2 = x2
         self.y2 = y2
         self.win = win
+        self.visited = False
 
     def set_postion(self, x1, y1, x2, y2):
         self.x1 = x1
@@ -23,15 +24,23 @@ class Cell():
             return
         if x1 and y2 and x2 and y2:
             self.set_postion(x1, y1, x2, y2)
-        print("Drawing cell at", self.x1, self.y1, self.x2, self.y2)
+        #print("Drawing cell at", self.x1, self.y1, self.x2, self.y2)
         if self.has_left_wall:
             self.win.draw_line(Line(Point(self.x1, self.y1), Point(self.x1, self.y2)), "black")
+        else:
+            self.win.draw_line(Line(Point(self.x1, self.y1), Point(self.x1, self.y2)), "white")
         if self.has_right_wall:
             self.win.draw_line(Line(Point(self.x2, self.y1), Point(self.x2, self.y2)), "black")
+        else:
+            self.win.draw_line(Line(Point(self.x2, self.y1), Point(self.x2, self.y2)), "white")
         if self.has_top_wall:
             self.win.draw_line(Line(Point(self.x1, self.y1), Point(self.x2, self.y1)), "black")
+        else:
+            self.win.draw_line(Line(Point(self.x1, self.y1), Point(self.x2, self.y1)), "white")
         if self.has_bottom_wall:
             self.win.draw_line(Line(Point(self.x1, self.y2), Point(self.x2, self.y2)), "black")
+        else:
+            self.win.draw_line(Line(Point(self.x1, self.y2), Point(self.x2, self.y2)), "white")
 
     def draw_move(self, to_cell, undo=False):
         if self.win is None:
